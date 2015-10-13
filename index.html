@@ -3,18 +3,24 @@
 <head>
 <script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
 <meta charset='utf-8'>
-<title>Petaling Jaya haze index</title>
+<title>Malaysian haze index</title>
+<style>
+.warning { background-color: orange; }
+</style>
 </head>
 <body>
 <div id='container'></div>
 <script id='template' type='text/ractive'>
-<p>Last Updated {{last_updated}}!</p>
-<h1>Latest {{latest.index}} at {{latest.time}}</h1>
-<ul>
-{{#each data}}
-  <li>{{index}} at {{time}}</li>
+<select value='{{selectedIndex}}'>
+{{#each haze.result:i}}
+<option value={{i}}>{{lokasi}}</option>
 {{/each}}
-</ul>
+</select>
+
+{{#with selectedCity}}
+<h1>{{lokasi}}</h1>
+<p>{{latest.index}} at {{latest.time}}</p>
+{{/with}}
 </script>
 <script src=main.js></script>
 <p><a href=https://github.com/kaihendry/pjhaze>Source code</a></p>

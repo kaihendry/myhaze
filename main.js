@@ -14,16 +14,17 @@ function fetchJSONFile(path, callback) {
 }
 
 fetchJSONFile('http://data.hazewatchapp.com/index_v2.json', function(json){
-		for (var i = 0; i < json.result.length; i++) {
-			if (json.result[i].lokasi == "Petaling Jaya") {
-				console.log(json.result[i]);
-				var ractive = new Ractive({
-					el: '#container',
-					template: '#template',
-					data: json.result[i]
-				});
-			break;
-			}
-			console.log(json.result[i]);
-		}
+var ractive = new Ractive({
+el: '#container',
+template: '#template',
+data: { haze: json, selectedIndex: 43 }
+});
+
+
+ractive.observe( 'selectedIndex', function ( index ) {
+console.log(index);
+this.set( 'selectedCity', json.result[ index ] );
+});
+
+ 
 		});
