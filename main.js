@@ -14,17 +14,18 @@ function fetchJSONFile(path, callback) {
 }
 
 fetchJSONFile('http://data.hazewatchapp.com/index_v2.json', function(json){
+
+selectedIndex = localStorage.selectedIndex || 43;
+
 var ractive = new Ractive({
 el: '#container',
 template: '#template',
-data: { haze: json, selectedIndex: 43 }
+data: { haze: json, selectedIndex: selectedIndex }
 });
-
 
 ractive.observe( 'selectedIndex', function ( index ) {
-console.log(index);
 this.set( 'selectedCity', json.result[ index ] );
+localStorage.setItem('selectedIndex', index);
 });
 
- 
-		});
+});

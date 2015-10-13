@@ -1,11 +1,13 @@
-<!doctype html>
-<html lang='en-GB'>
+<!DOCTYPE html>
+<html>
 <head>
-<script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
 <meta charset='utf-8'>
+<script src='http://cdn.ractivejs.org/latest/ractive.min.js'></script>
+<meta name=viewport content="width=device-width, initial-scale=1">
 <title>Malaysian haze index</title>
 <style>
 .warning { background-color: orange; }
+.hist { display: inline; border: blue thin solid; margin: 0.3em }
 </style>
 </head>
 <body>
@@ -18,11 +20,19 @@
 </select>
 
 {{#with selectedCity}}
-<h1>{{lokasi}}</h1>
-<p>{{latest.index}} at {{latest.time}}</p>
+<h1>{{lokasi}} {{latest.index}} at {{latest.time}}</h1>
+<p>Last updated: {{last_updated}}</p>
+{{#each data:i}}
+{{#if index}}
+<div class="hist">{{index}} at <span>{{time}}</span></div>
+{{/if}}
+{{/each}}
 {{/with}}
 </script>
+
 <script src=main.js></script>
-<p><a href=https://github.com/kaihendry/pjhaze>Source code</a></p>
+
+<footer><a href=https://github.com/kaihendry/pjhaze>Source code</a></footer>
+
 </body>
 </html>
