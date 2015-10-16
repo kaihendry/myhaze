@@ -15,16 +15,16 @@
 <script id='template' type='text/ractive'>
 <select value='{{selectedIndex}}'>
 {{#each haze.result:i}}
-<option value={{i}}>{{lokasi}}</option>
+<option value={{i}}>{{lokasi}}, {{negeri}}</option>
 {{/each}}
 </select>
 
 {{#with selectedCity}}
-<h1>{{lokasi}} {{latest.index}} at {{latest.time}}</h1>
+<h1>{{latest.index}} at {{latest.time}}</h1>
 <p>Last updated: {{last_updated}}</p>
 {{#each data:i}}
 {{#if index}}
-<div class="hist">{{index}} at <span>{{time}}</span></div>
+<div class="hist">{{index}} at {{time}}</div>
 {{/if}}
 {{/each}}
 {{/with}}
