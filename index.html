@@ -6,8 +6,8 @@
 <meta name=viewport content="width=device-width, initial-scale=1">
 <title>Malaysian haze index</title>
 <style>
-.warning { background-color: orange; }
-.hist { display: inline; border: blue thin solid; margin: 0.3em }
+#history { display: flex; flex-flow: row wrap; }
+.hist { flex: 1 auto; background-color: lightblue; margin: 0.2em; text-align: center; }
 </style>
 </head>
 <body>
@@ -22,11 +22,13 @@
 {{#with selectedCity}}
 <h1>{{latest.index}} at {{latest.time}}</h1>
 <p>Last updated: {{last_updated}}</p>
+<section id=history>
 {{#each data:i}}
 {{#if index}}
 <div class="hist">{{index}} at {{time}}</div>
 {{/if}}
 {{/each}}
+</section>
 {{/with}}
 </script>
 
